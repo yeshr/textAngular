@@ -990,8 +990,8 @@ angular.module('textAngular.taBind', ['textAngular.factories', 'textAngular.DOM'
 				_firstTagIndex = _firstMatch.index;
 			}
 			_blankVal = _blankVal.trim().substring(_firstTagIndex, _firstTagIndex + 100);
-			// check for no tags entry
-			if(/^[^<>]+$/i.test(_blankVal)) return false;
+			// check for no tags entry at the start fi the string
+			if(/^[^<>]+(?:<br(?:\/){0,1}>){0,1}$/i.test(_blankVal)) return false;
 			// this regex is to match any number of whitespace only between two tags
 			if (_blankVal.length === 0 || _blankVal === _defaultTest || /^>(\s|&nbsp;)*<\/[^>]+>$/ig.test(_blankVal)) return true;
 			// this regex tests if there is a tag followed by some optional whitespace and some text after that
